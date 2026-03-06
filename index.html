@@ -441,10 +441,27 @@
     transition: all 0.12s;
   }
 
+  .opcion-radio.cuadrado {
+    border-radius: 2px;
+  }
+
   .opcion-btn.selected .opcion-radio {
     background: var(--negro);
     border-color: var(--negro);
     box-shadow: inset 0 0 0 3px white;
+  }
+
+  .opcion-btn.selected .opcion-radio.cuadrado {
+    box-shadow: none;
+  }
+
+  .opcion-btn.selected .opcion-radio.cuadrado::after {
+    content: '✓';
+    display: block;
+    color: white;
+    font-size: 9px;
+    line-height: 12px;
+    text-align: center;
   }
 
   /* TEMAS */
@@ -1184,7 +1201,7 @@
 
     <div id="donar-step-1">
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#999;margin-bottom:20px;">Apoyar IMPAR</div>
-      <p style="font-size:13px;line-height:1.8;color:#222;margin-bottom:20px;">La tesis es simple: el problema no es ser de izquierda o de derecha — el problema son quienes usan la política para beneficio propio, y la apatía que les abre la puerta.<br><br>IMPAR nació de dos cosas: curiosidad por la IA y la intención de un mejor país para mi hija y para todos.<br><br>Si llegas hasta aquí y crees que vale la pena, tu apoyo nos dice que las iniciativas independientes de control político tienen lugar en Colombia. Eso solo ya significa mucho.</p>
+      <p style="font-size:13px;line-height:1.8;color:#222;margin-bottom:20px;">La tesis es simple: el problema no es ser de izquierda o de derecha — el problema son quienes usan la política para beneficio propio, y la apatía que les abre la puerta.<br><br>Si llegas hasta aquí y crees que vale la pena, tu apoyo nos dice que las iniciativas independientes de control político tienen lugar en Colombia. Eso solo ya significa mucho.</p>
 
       <div style="border:1px solid #eee;padding:16px;text-align:center;margin-bottom:16px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#999;margin-bottom:8px;">Bancolombia · Ahorros</div>
@@ -1193,7 +1210,7 @@
       </div>
 
       <div style="font-size:12px;color:#555;line-height:1.7;padding:12px 14px;background:#f9f9f9;border-left:3px solid #000;">
-        Si donas <strong>$333.000 COP o más</strong>, te enviamos una camiseta IMPAR. Déjanos tu teléfono y te contactamos.
+        Si donas <strong>$111.111 COP o más</strong>, te enviamos una camiseta IMPAR con tu código de donante. Déjanos tu teléfono y te contactamos.
       </div>
 
       <input id="donar-nombre" type="text" placeholder="Tu nombre (opcional)"
@@ -1346,9 +1363,9 @@ const preguntas = [
   },
   {
     id: 7,
-    texto: "La delincuencia y la corrupción se combaten mejor con formación, reinserción social y acompañamiento que solo con penas más duras de cárcel.",
-    etiqueta_izq: "Penas más duras",
-    etiqueta_der: "Formación y reinserción"
+    texto: "La delincuencia común se reduce mejor con más cárceles y penas más duras que con programas de resocialización y oportunidades.",
+    etiqueta_izq: "Resocialización y oportunidades",
+    etiqueta_der: "Cárcel y penas duras"
   },
   {
     id: 9,
@@ -1367,6 +1384,24 @@ const preguntas = [
     texto: "El Estado debe priorizar redistribución de riqueza y justicia social aunque implique mayores impuestos a empresas y altos ingresos.",
     etiqueta_izq: "Menores impuestos y menos Estado",
     etiqueta_der: "Justicia social y redistribución"
+  },
+  {
+    id: 12,
+    texto: "La interrupción voluntaria del embarazo debe ser una decisión personal y estar disponible legalmente.",
+    etiqueta_izq: "En desacuerdo",
+    etiqueta_der: "De acuerdo"
+  },
+  {
+    id: 13,
+    texto: "El matrimonio entre personas del mismo sexo debe estar reconocido constitucionalmente con plenos derechos.",
+    etiqueta_izq: "En desacuerdo",
+    etiqueta_der: "De acuerdo"
+  },
+  {
+    id: 14,
+    texto: "El porte de la dosis mínima de drogas no debe ser penalizado ni tratado como delito.",
+    etiqueta_izq: "En desacuerdo",
+    etiqueta_der: "De acuerdo"
   }
 ];
 
@@ -1627,7 +1662,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 74,
     "gobierno": "Independiente",
-    "temas": "Seg. alimentaria",
+    "temas": "Seguridad alimentaria / derechos humanos",
     "bio": "Exalcalde de Bogotá; enfoque social.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -1643,6 +1678,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1662,7 +1700,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 40,
     "gobierno": "Oposición",
-    "temas": "Anticorrupción",
+    "temas": "Anticorrupción / NIñez y Mujeres",
     "bio": "Representante; voz crítica del gobierno.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -1678,6 +1716,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1713,6 +1754,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1748,6 +1792,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1783,6 +1830,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1818,6 +1868,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1853,6 +1906,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1888,6 +1944,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1923,6 +1982,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1958,6 +2020,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -1993,6 +2058,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2028,6 +2096,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2063,6 +2134,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2072,7 +2146,7 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "Alianza por Colombia",
-    "cabeza": "Gustavo A. Moreno",
+    "cabeza": "Gustavo Adolfo Moreno",
     "descripcion": "Alianza por Colombia · Senado",
     "camara": "senado",
     "departamento": null,
@@ -2082,7 +2156,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 35,
     "gobierno": "Independiente",
-    "temas": "Cárceles",
+    "temas": "Cárceles / tecnología social",
     "bio": "Senador; operador regional fuerte.",
     "alerta": "bajo",
     "alertaTexto": "Ruidos de clientelismo en Barranca.",
@@ -2098,6 +2172,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2133,6 +2210,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2168,6 +2248,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2203,6 +2286,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2238,6 +2324,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2273,6 +2362,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2308,6 +2400,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2327,7 +2422,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 45,
     "gobierno": "Independiente",
-    "temas": "Empleo/Discap.",
+    "temas": "Empleo/Discapacidad",
     "bio": "Exalcalde; ficha de Mauricio Lizcano.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -2343,6 +2438,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2362,8 +2460,8 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 34,
     "gobierno": "Oposición",
-    "temas": "Anticorrupción",
-    "bio": "Youtuber; opositor radical.",
+    "temas": "Anticorrupción / Seguridad",
+    "bio": "Youtuber; opositor radical del gobierno de petro",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
@@ -2378,6 +2476,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -2397,7 +2498,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 50,
     "gobierno": "Oposición",
-    "temas": "Seg./Salud",
+    "temas": "Seguridad/Salud",
     "bio": "Senador de confianza de Vargas Lleras.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -2409,11 +2510,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "CM",
@@ -2444,11 +2548,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "LR",
@@ -2467,7 +2574,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 36,
     "gobierno": "Independiente",
-    "temas": "Gestión rec.",
+    "temas": "Gestión de recursos",
     "bio": "Primo de Gob. Arana; ligado a Diazgranados.",
     "alerta": "bajo",
     "alertaTexto": "Nulidad previa por contratos faimiliares.",
@@ -2479,11 +2586,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "SA",
@@ -2514,11 +2624,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "CF",
@@ -2549,11 +2662,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "DL",
@@ -2584,11 +2700,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "LG",
@@ -2619,11 +2738,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "EE",
@@ -2654,11 +2776,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "JP",
@@ -2677,7 +2802,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Independiente",
-    "temas": "Deporte/Seg.",
+    "temas": "Deporte/Seguridad",
     "bio": "Exconcejal de Cali; aliado de Eder.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -2689,11 +2814,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "CR",
@@ -2724,11 +2852,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "NG",
@@ -2747,7 +2878,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Oposición",
-    "temas": "Derechos afro",
+    "temas": "Comunidad Afro",
     "bio": "Presidente de ADA; rompió con el Pacto.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -2759,11 +2890,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "PR",
@@ -2794,11 +2928,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "CM",
@@ -2817,7 +2954,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 43,
     "gobierno": "Oposición",
-    "temas": "Salud/Afro",
+    "temas": "Salud/Comunidad Afro",
     "bio": "Ex-diputado; el más votado de Atlántico.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -2829,11 +2966,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "GA",
@@ -2852,7 +2992,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 41,
     "gobierno": "Independiente",
-    "temas": "Vías/Recursos",
+    "temas": "Vías",
     "bio": "Exalcalde de Malambo.",
     "alerta": "alto",
     "alertaTexto": "Juicio: Prevaricato (Hospital).",
@@ -2864,11 +3004,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "AÁ",
@@ -2887,7 +3030,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 54,
     "gobierno": "Oposición",
-    "temas": "Modelo B/quilla",
+    "temas": "Infraestructura Social / seguridad",
     "bio": "Operador de confianza de Álex Char.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -2899,11 +3042,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "GG",
@@ -2934,11 +3080,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       2.0,
+      3.0,
+      2.0,
       2.0,
       3.0,
       2.0,
       3.0,
-      2.0
+      3.0,
+      3.0
     ],
     "foto": null,
     "iniciales": "RO",
@@ -2969,10 +3118,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3004,10 +3156,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3039,10 +3194,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3074,10 +3232,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3097,7 +3258,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 36,
     "gobierno": "Oposición",
-    "temas": "Empleo / Emprend.",
+    "temas": "Empleo / Emprendimiento",
     "bio": "Activista digital y opinadora; apuesta de renovación en Medellín.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -3109,10 +3270,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3144,10 +3308,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3179,10 +3346,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3192,7 +3362,7 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "Centro Democrático",
-    "cabeza": "María C. Posada",
+    "cabeza": "María Clara Posada",
     "descripcion": "Centro Democrático · Senado",
     "camara": "senado",
     "departamento": null,
@@ -3214,10 +3384,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3249,10 +3422,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3284,10 +3460,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3319,10 +3498,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3354,10 +3536,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3389,10 +3574,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3402,7 +3590,7 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "Centro Democrático",
-    "cabeza": "Juan F. Espinal",
+    "cabeza": "Juan Fernando Espinal",
     "descripcion": "Centro Democrático · Senado",
     "camara": "senado",
     "departamento": null,
@@ -3424,10 +3612,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3447,7 +3638,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 47,
     "gobierno": "Oposición",
-    "temas": "Infancia / PAE",
+    "temas": "Niñez  / Alimentación",
     "bio": "Relevo de Miguel Uribe (q.e.p.d.)",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -3459,10 +3650,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3494,10 +3688,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3507,7 +3704,7 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "Centro Democrático",
-    "cabeza": "Zandra M. Bernal",
+    "cabeza": "Zandra Maria Bernal",
     "descripcion": "Centro Democrático · Senado",
     "camara": "senado",
     "departamento": null,
@@ -3517,7 +3714,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 38,
     "gobierno": "Oposición",
-    "temas": "Minería Carbón",
+    "temas": "Minería / gestión territorial",
     "bio": "Exalcaldesa de Socha; reemplaza a Ciro Ramírez en la región.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -3529,10 +3726,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3564,10 +3764,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3587,7 +3790,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 53,
     "gobierno": "Oposición",
-    "temas": "Reservas / Defensa",
+    "temas": "Defensa",
     "bio": "Voz de los militares retirados; ex-policía con fuerza en Arauca.",
     "alerta": "medio",
     "alertaTexto": "Indagatoria por desaparición.",
@@ -3599,10 +3802,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3612,18 +3818,18 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "Centro Democrático",
-    "cabeza": "M. C. Restrepo",
+    "cabeza": "Marelen Castillo Torres",
     "descripcion": "Centro Democrático · Senado",
     "camara": "senado",
     "departamento": null,
     "sector": "Privado",
-    "educacion": "Pregrado",
-    "experiencia": "Nuevo",
+    "educacion": "PhD",
+    "experiencia": "Continuidad",
     "edad": "intermedio",
-    "edadNum": 55,
+    "edadNum": 57,
     "gobierno": "Oposición",
-    "temas": "Tributación / Fiscal",
-    "bio": "Abogada experta en inversión; ficha técnica para debates de impuestos.",
+    "temas": "educación productiva",
+    "bio": "Académica de alto nivel con 20 años en el sector privado, que saltó a la política como fórmula vicepresidencial en 2022.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
@@ -3634,14 +3840,17 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
-    "iniciales": "MR",
+    "iniciales": "MT",
     "matchRazones": {},
     "criterios": null
   },
@@ -3669,10 +3878,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -3704,10 +3916,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3727,7 +3942,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 51,
     "gobierno": "Aliado",
-    "temas": "Serv. Públicos",
+    "temas": "Servicios Públicos",
     "bio": "Químico; cuñado de Euclides Torres. Ficha de clanes costeños.",
     "alerta": "alto",
     "alertaTexto": "Vínculos con financiador de campaña Petro (Caso clan Torres).",
@@ -3739,10 +3954,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3774,10 +3992,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3797,7 +4018,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 63,
     "gobierno": "Aliado",
-    "temas": "Ref. Laboral",
+    "temas": "Reforma Laboral",
     "bio": "Expresidente de Sindesena. Veterano de la izquierda sindical.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -3809,10 +4030,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3844,10 +4068,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3879,10 +4106,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3914,10 +4144,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3949,10 +4182,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -3984,10 +4220,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4007,7 +4246,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 50,
     "gobierno": "Aliado",
-    "temas": "Econ. Popular",
+    "temas": "Economia Popular",
     "bio": "Antropólogo; codirector del Pacto. Experto en concertación.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -4019,10 +4258,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4054,10 +4296,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4089,10 +4334,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4124,10 +4372,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4147,7 +4398,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 34,
     "gobierno": "Aliado",
-    "temas": "Univ. Pública",
+    "temas": "Universidad Pública",
     "bio": "Abogado; alfil de Quintero. Exconcejal de Medellín.",
     "alerta": "medio",
     "alertaTexto": "Sanción por agresión a policía; líos de violencia.",
@@ -4159,10 +4410,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4194,10 +4448,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4217,7 +4474,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 52,
     "gobierno": "Aliado",
-    "temas": "Trab. Cultura",
+    "temas": "Trabajo / Cultura",
     "bio": "Presentador; enlace de Barranquilla con la Presidencia.",
     "alerta": "bajo",
     "alertaTexto": "Indagatoria Caso Nicolás Petro y Christian Daes.",
@@ -4229,10 +4486,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4252,8 +4512,8 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 45,
     "gobierno": "Aliado",
-    "temas": "Autonomía Zenú",
-    "bio": "Administradora en Salud; ex-cacica. Respaldada por la ONIC.",
+    "temas": "Descentralización",
+    "bio": "Administradora en Salud; ex-cacica. Respaldada por la ONIC. Busca Autonomía Zenú",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
@@ -4264,10 +4524,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4287,7 +4550,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 45,
     "gobierno": "Aliado",
-    "temas": "Derechos Lab.",
+    "temas": "Derechos Laborales",
     "bio": "Abogado; líder sindical petrolero. Heredero de Alexander López.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -4299,10 +4562,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4334,10 +4600,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4357,7 +4626,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Aliado",
-    "temas": "Consulta Prev.",
+    "temas": "Consulta Previa",
     "bio": "Abogado; delegado afro ante el gobierno. Voto étnico-técnico.",
     "alerta": "medio",
     "alertaTexto": "Impugnación al orden de la lista ante el CNE.",
@@ -4369,10 +4638,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4392,7 +4664,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Aliado",
-    "temas": "Mujer/Frontera",
+    "temas": "Mujer",
     "bio": "Líder de Maicao; protegida de Gloria Flórez.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -4404,10 +4676,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4427,7 +4702,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 39,
     "gobierno": "Aliado",
-    "temas": "Ref. Política",
+    "temas": "Reforma Política",
     "bio": "Filósofo; expresidente de Cámara. Ideólogo del ala dura.",
     "alerta": "bajo",
     "alertaTexto": "Investigado por Corte Suprema por manejo de UTL.",
@@ -4439,10 +4714,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -4474,10 +4752,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4497,7 +4778,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 43,
     "gobierno": "Oposición",
-    "temas": "Minería / Emp.",
+    "temas": "Minería / Emprendimiento",
     "bio": "Ex-Pdte. Asamblea de Antioquia. Coordinador nacional de \"Fico\". Brazo político de la lista.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -4509,10 +4790,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4544,10 +4828,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4567,7 +4854,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 54,
     "gobierno": "Oposición",
-    "temas": "Seg. / Cárceles",
+    "temas": "Seguridad / Cárceles",
     "bio": "MG (R) de la Policía. Excomandante en Bogotá y Medellín. Voz de la reserva.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -4579,10 +4866,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4614,10 +4904,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4649,10 +4942,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4684,10 +4980,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4719,10 +5018,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -4755,7 +5057,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -4777,7 +5082,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 47,
     "gobierno": "Independiente",
-    "temas": "Agroind. / Veeduría",
+    "temas": "Agroindustria / Veeduría",
     "bio": "Abogado. Excónsul en Uruguay. Líder de \"Gente Nueva\". Exaliado de Rodolfo Hernández.",
     "alerta": "bajo",
     "alertaTexto": "Ruido: Nombramiento consular anulado por el Consejo de Estado en 2024.",
@@ -4790,7 +5095,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -4825,7 +5133,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -4860,7 +5171,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -4895,7 +5209,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -4930,7 +5247,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -4965,7 +5285,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -4999,11 +5322,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "LT",
@@ -5034,11 +5360,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "FA",
@@ -5069,11 +5398,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "RA",
@@ -5092,7 +5424,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Independiente",
-    "temas": "Econ. Cuidado",
+    "temas": "Economía del Cuidado",
     "bio": "Abogada e Ing. Industrial. Esposa del alcalde de Cúcuta. Apuesta de Simón Gaviria.",
     "alerta": "bajo",
     "alertaTexto": "Investigación: Presunta presión a contratistas en la Alcaldía de Cúcuta.",
@@ -5104,11 +5436,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "AV",
@@ -5139,11 +5474,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "YD",
@@ -5162,7 +5500,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 40,
     "gobierno": "Aliado",
-    "temas": "Ordenam. Territ.",
+    "temas": "Ordenamamiento territorial",
     "bio": "Senadora experta en presupuesto. Heredera de la estructura de Álvaro Ashton.",
     "alerta": "bajo",
     "alertaTexto": "Apoyo cuestionado: Vinculación con Álvaro Ashton (condenado).",
@@ -5174,11 +5512,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "LS",
@@ -5197,7 +5538,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 43,
     "gobierno": "Oposición",
-    "temas": "Descentraliz.",
+    "temas": "Descentralización",
     "bio": "Exgobernador de Sucre. Releva a su hermana Karina Espinosa en el Senado.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -5209,11 +5550,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "HE",
@@ -5232,7 +5576,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 43,
     "gobierno": "Oposición",
-    "temas": "Constituc. 91",
+    "temas": "Institucionalidad",
     "bio": "Ex-Senador. Hijo del líder Horacio Serpa. Defensor de la institucionalidad.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -5244,11 +5588,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "HS",
@@ -5267,7 +5614,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 55,
     "gobierno": "Independiente",
-    "temas": "Descentraliz.",
+    "temas": "Descentralización",
     "bio": "Representante a la Cámara (3 periodos). Aliado estratégico de Jorge Rey.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -5279,11 +5626,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "ÓS",
@@ -5314,11 +5664,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "SM",
@@ -5349,11 +5702,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "CV",
@@ -5372,7 +5728,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 65,
     "gobierno": "Aliado",
-    "temas": "Servicios Púb.",
+    "temas": "Servicios Públicos",
     "bio": "Senador veterano. Heredero de Hugo Serrano. Aliado de las reformas sociales.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -5384,11 +5740,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "JB",
@@ -5419,11 +5778,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "AP",
@@ -5442,7 +5804,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 49,
     "gobierno": "Independiente",
-    "temas": "Finanzas Púb.",
+    "temas": "Finanzas Públicos",
     "bio": "Representante (2 periodos). Experto tributario y coordinador de reformas fiscales.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -5454,11 +5816,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "ÁM",
@@ -5489,11 +5854,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "ML",
@@ -5524,11 +5892,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "AC",
@@ -5559,11 +5930,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "JL",
@@ -5594,11 +5968,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "DA",
@@ -5629,11 +6006,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "LG",
@@ -5664,11 +6044,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "MG",
@@ -5703,6 +6086,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -5722,13 +6108,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 57,
     "gobierno": "Independiente",
-    "temas": "Serv. Públicos",
+    "temas": "Servicios Públicos",
     "bio": "Senador desde 2006. Expresidente del Senado. Heredero del clan Name.",
     "alerta": "bajo",
     "alertaTexto": "Investigación: Indagación por presuntos nexos con \"Los Rastrojos\".",
     "listaCerrada": true,
     "posicionLista": 2,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -5773,6 +6162,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -5792,13 +6184,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": null,
     "edadNum": null,
     "gobierno": "Oposición",
-    "temas": "Familia / Seg.",
+    "temas": "Familia / Seguridad",
     "bio": "Ex-Contralor de Regalías. Apuesta llanera de Dilian Francisca Toro.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
     "posicionLista": 4,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -5843,6 +6238,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -5869,6 +6267,9 @@ const CANDIDATOS_HARDCODED = [
     "listaCerrada": true,
     "posicionLista": 7,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -5913,6 +6314,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -5939,6 +6343,9 @@ const CANDIDATOS_HARDCODED = [
     "listaCerrada": true,
     "posicionLista": 9,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -5983,6 +6390,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6002,13 +6412,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 43,
     "gobierno": "Aliado",
-    "temas": "Seg. Alimentaria",
+    "temas": "Seguridad Alimentaria",
     "bio": "Representante. Lidera el Frente contra el Hambre. Aliada de la Ñoñomanía.",
     "alerta": "medio",
     "alertaTexto": "Riesgo: Indagación por compra de votos; nexos de su esposo con ilegales.",
     "listaCerrada": true,
     "posicionLista": 11,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -6053,6 +6466,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6079,6 +6495,9 @@ const CANDIDATOS_HARDCODED = [
     "listaCerrada": true,
     "posicionLista": 14,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -6123,6 +6542,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6149,6 +6571,9 @@ const CANDIDATOS_HARDCODED = [
     "listaCerrada": true,
     "posicionLista": 89,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -6193,6 +6618,9 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6219,6 +6647,9 @@ const CANDIDATOS_HARDCODED = [
     "listaCerrada": true,
     "posicionLista": 100,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -6260,9 +6691,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6295,9 +6729,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6317,7 +6754,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 56,
     "gobierno": "Independiente",
-    "temas": "Seguridad / MIRA",
+    "temas": "Seguridad",
     "bio": "Militar retirado (Armada). Presidente del MIRA. Experto en Justicia Penal Militar.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -6330,9 +6767,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6365,9 +6805,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6400,9 +6843,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6435,9 +6881,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6470,9 +6919,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6505,9 +6957,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6527,7 +6982,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 60,
     "gobierno": "Independiente",
-    "temas": "Gob. Corporativo",
+    "temas": "Gobierno Corporativo",
     "bio": "Exgerente de EPM y ex-Rector. Aliado de Sergio Fajardo. Perfil gerencial.",
     "alerta": "bajo",
     "alertaTexto": "Proceso en Fiscalía por Hidroituango; ruidos en Rectoría.",
@@ -6540,9 +6995,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6575,9 +7033,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6610,9 +7071,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6632,7 +7096,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 35,
     "gobierno": "Oposición",
-    "temas": "Ed. Jurídica",
+    "temas": "Transparencia Institucional",
     "bio": "\"El Profe Charles\". Docente con +300k seguidores. Apuesta de Fajardo.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -6645,9 +7109,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6680,9 +7147,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6715,9 +7185,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6737,7 +7210,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 35,
     "gobierno": "Independiente",
-    "temas": "Explot. Sexual",
+    "temas": "Explotación Sexual",
     "bio": "Sobrina de Íngrid Betancourt. Activista contra la trata de personas.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -6750,9 +7223,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6785,9 +7261,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6820,9 +7299,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -6842,7 +7324,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 57,
     "gobierno": "Oposición",
-    "temas": "Seg. / Justicia",
+    "temas": "Seguridad / Justicia",
     "bio": "Cabeza de lista. Sobrino de Álvaro Gómez. Líder jurídico contra las reformas de Petro.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -6850,12 +7332,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 1,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -6885,12 +7370,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 2,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -6920,12 +7408,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 3,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -6955,12 +7446,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 8,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -6982,7 +7476,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 45,
     "gobierno": "Oposición",
-    "temas": "Voto Militar",
+    "temas": "Seguridad",
     "bio": "\"Comandante de la Verdad\". Mayor (r) de la Armada con ~1M seguidores.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -6990,12 +7484,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 10,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -7017,7 +7514,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 55,
     "gobierno": "Oposición",
-    "temas": "Control Territ.",
+    "temas": "Control Territorial",
     "bio": "General (r) del Ejército. Hermano del fallecido Gral. Jorge E. Mora Rangel.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7025,12 +7522,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 11,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -7052,7 +7552,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 62,
     "gobierno": "Oposición",
-    "temas": "Ref. Justicia",
+    "temas": "Reforma a la Justicia",
     "bio": "Exministro de Justicia (Duque) y Ex-Pdte. Consejo Sup. de la Judicatura.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7060,12 +7560,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 20,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -7095,12 +7598,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 100,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -7134,11 +7640,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "DB",
@@ -7169,11 +7678,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "NS",
@@ -7204,11 +7716,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "MB",
@@ -7239,11 +7754,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "DC",
@@ -7274,11 +7792,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "GÁ",
@@ -7309,11 +7830,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "ST",
@@ -7332,7 +7856,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Independiente",
-    "temas": "Autonomía",
+    "temas": "Autonomía Regional",
     "bio": "Exalcalde de Montería (2 veces). Heredero casa García Burgos.",
     "alerta": "medio",
     "alertaTexto": "Imputación: Interés indebido en contratos (Coliseo).",
@@ -7344,11 +7868,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "MP",
@@ -7379,11 +7906,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "JG",
@@ -7402,7 +7932,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 65,
     "gobierno": "Independiente",
-    "temas": "Salud / Seg.",
+    "temas": "Salud / Seguridad",
     "bio": "Veterano del Huila. Expresidente del Senado. Regresa tras pausa.",
     "alerta": "bajo",
     "alertaTexto": "Cuestionamientos: Mencionado en Cartel de la Toga (absuelto).",
@@ -7414,11 +7944,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "HS",
@@ -7449,11 +7982,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "JG",
@@ -7472,7 +8008,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 44,
     "gobierno": "Independiente",
-    "temas": "Armas / Seg.",
+    "temas": "Armas / Seguridad",
     "bio": "Abogado. Pasó de ser pupilo de Efraín Cepeda a ser aliado del Gob.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7484,11 +8020,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "JW",
@@ -7519,11 +8058,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "LB",
@@ -7542,7 +8084,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 61,
     "gobierno": "Oposición",
-    "temas": "Seg. / Salud",
+    "temas": "Seguridad / Salud",
     "bio": "Hermano del Gobernador de Santander. Salta de Cámara a Senado.",
     "alerta": "bajo",
     "alertaTexto": "Apoyo cuestionado: Hermano de Iván Díaz (Yidispolítica).",
@@ -7554,11 +8096,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "LM",
@@ -7577,7 +8122,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 71,
     "gobierno": "Independiente",
-    "temas": "Salud / Char",
+    "temas": "Salud",
     "bio": "Médico. Heredero oficial de la curul de Efraín Cepeda en el Caribe.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7589,11 +8134,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "AZ",
@@ -7612,7 +8160,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 36,
     "gobierno": "Oposición",
-    "temas": "Seg. / Agro",
+    "temas": "Seguridad  / Agro",
     "bio": "Administrador. Sobrino y heredero de Óscar Barreto Quiroga.",
     "alerta": "bajo",
     "alertaTexto": "Apoyo cuestionado: Cuota del \"Clan Barreto\" (Tolima).",
@@ -7624,11 +8172,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "ST",
@@ -7659,11 +8210,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "MR",
@@ -7694,11 +8248,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "MG",
@@ -7717,7 +8274,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 37,
     "gobierno": "Oposición",
-    "temas": "Mujer / Motiv.",
+    "temas": "Mujer / Cambio Climático",
     "bio": "Influencer (\"La Llanera 87\"). Apuesta de renovación digital.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7729,11 +8286,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "YC",
@@ -7752,8 +8312,8 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Independiente",
-    "temas": "Campo / Pop.",
-    "bio": "Influencer (\"Pechy Player\"). Discurso vulgar y popular.",
+    "temas": "Campo",
+    "bio": "Influencer (\"Pechy Player\"). Tiene un discurso popular.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
@@ -7764,11 +8324,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "EG",
@@ -7799,11 +8362,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "WM",
@@ -7822,7 +8388,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 33,
     "gobierno": "Oposición",
-    "temas": "Control fiscal y anticorrupción",
+    "temas": "Control fiscal / anticorrupción",
     "bio": "Concejal de Bogotá y abogado. Ganó fama nacional denunciando sobrecostos y contratos estatales en redes sociales.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7834,10 +8400,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -7857,7 +8426,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Independiente",
-    "temas": "Reforma al Congreso y ética",
+    "temas": "Reforma al Congreso / ética",
     "bio": "Investigadora y actual Representante. Líder de \"Trabajen Vagos\", enfocada en ausentismo y reforma al Congreso.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7873,6 +8442,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -7892,7 +8464,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 35,
     "gobierno": "Aliado",
-    "temas": "Reforma laboral y justicia social",
+    "temas": "Reforma laboral / justicia social",
     "bio": "Activista y Representante. Ha sido la cara de la Reforma Laboral en el Congreso y defensora de los derechos del trabajador.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7904,10 +8476,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -7927,7 +8502,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 25,
     "gobierno": "Independiente",
-    "temas": "Salario para médicos internos",
+    "temas": "Salud / Salario Médicos",
     "bio": "Médico de la U. del Rosario y asesor de Jennifer Pedraza. Logró incluir el salario para médicos internos en la reforma laboral.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7940,9 +8515,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -7962,7 +8540,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 50,
     "gobierno": "Oposición",
-    "temas": "Libertad económica y seguridad",
+    "temas": "Libertad económica / seguridad",
     "bio": "Periodista y exconsejero presidencial de Iván Duque. Experto en comunicación estratégica y defensa de la libertad económica.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -7974,10 +8552,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -7986,9 +8567,9 @@ const CANDIDATOS_HARDCODED = [
     "criterios": null
   },
   {
-    "nombre": "Nuevo Liberalismo / Mira / Decente",
+    "nombre": "Nuevo Liberalismo",
     "cabeza": "Pedro Nel Ospina",
-    "descripcion": "Nuevo Liberalismo / Mira / Decente · Cámara por Bogotá",
+    "descripcion": "Nuevo Liberalismo · Cámara por Bogotá",
     "camara": "camara",
     "departamento": "bogota",
     "sector": "Público",
@@ -7997,7 +8578,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 66,
     "gobierno": "Oposición",
-    "temas": "Rigor fiscal y empleo por horas",
+    "temas": "Rigor fiscal / empleo por horas",
     "bio": "Exdirector de la DIAN y primer presidente de Colpensiones. Representa la rigurosidad fiscal y la experiencia técnica estatal.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8010,9 +8591,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -8032,7 +8616,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 50,
     "gobierno": "Aliado",
-    "temas": "Educación pública y Ley 30",
+    "temas": "Educación pública / reforma estructural",
     "bio": "Secretario General de la UP y actual Representante. Defensor de la educación pública y ponente de la reforma a la Ley 30.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8044,10 +8628,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -8067,7 +8654,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 34,
     "gobierno": "Independiente",
-    "temas": "Anticorrupción y extorsión",
+    "temas": "Anticorrupción / extorsión",
     "bio": "Exinvestigador de la Fundación Pares. Experto en rastrear clanes políticos y denunciar mafias de corrupción electoral.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8083,6 +8670,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -8102,7 +8692,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 45,
     "gobierno": "Oposición",
-    "temas": "Seguridad y Bloque Antipetrista",
+    "temas": "Seguridad / Bloque Antipetrista",
     "bio": "Empresario textil y activista de derecha. Candidato impulsado por el bloque de Abelardo de la Espriella contra el petrismo.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8110,12 +8700,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 102,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -8126,9 +8719,9 @@ const CANDIDATOS_HARDCODED = [
     "criterios": null
   },
   {
-    "nombre": "Nuevo Liberalismo / Mira / Decente",
+    "nombre": "Nuevo Liberalismo",
     "cabeza": "José David Castellanos",
-    "descripcion": "Nuevo Liberalismo / Mira / Decente · Cámara por Bogotá",
+    "descripcion": "Nuevo Liberalismo · Cámara por Bogotá",
     "camara": "camara",
     "departamento": "bogota",
     "sector": "Público",
@@ -8137,7 +8730,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 38,
     "gobierno": "Oposición",
-    "temas": "Defensa del Metro y Bogotá",
+    "temas": "eficiencia urbana /autonomía capitalina",
     "bio": "Exconcejal y asesor cercano al alcalde Galán. Su agenda busca blindar los proyectos de infraestructura de Bogotá (Metro).",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8150,9 +8743,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -8172,7 +8768,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Aliado",
-    "temas": "Ciberseguridad y paz urbana",
+    "temas": "Ciberseguridad / paz urbana",
     "bio": "Politólogo y exdirector de Seg. Ciudadana en MinDefensa. Experto en ciberseguridad y construcción de paz urbana.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8188,6 +8784,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -8196,9 +8795,9 @@ const CANDIDATOS_HARDCODED = [
     "criterios": null
   },
   {
-    "nombre": "Nuevo Liberalismo / Mira / Decente",
+    "nombre": "Nuevo Liberalismo",
     "cabeza": "Juan David Aristizábal",
-    "descripcion": "Nuevo Liberalismo / Mira / Decente · Cámara por Bogotá",
+    "descripcion": "Nuevo Liberalismo · Cámara por Bogotá",
     "camara": "camara",
     "departamento": "bogota",
     "sector": "Sociedad Civil",
@@ -8207,7 +8806,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 36,
     "gobierno": "Oposición",
-    "temas": "Empleo joven y tecnología",
+    "temas": "Empleo joven / tecnología",
     "bio": "Emprendedor social (ProTalento) y exdecano. Enfocado en cerrar la brecha de empleo digital para jóvenes en Bogotá.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8220,9 +8819,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -8242,7 +8844,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 47,
     "gobierno": "Oposición",
-    "temas": "Agenda Provida e Infancia",
+    "temas": "Agenda Provida / Niñez",
     "bio": "Concejala de Bogotá por 18 años. Referente de los sectores cristianos y provida, defensora de las madres comunitarias.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8254,10 +8856,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -8277,7 +8882,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 45,
     "gobierno": "Aliado",
-    "temas": "Ley del Cuidado y salud",
+    "temas": "Ley del Cuidado / salud",
     "bio": "Exalcalde de San Cristóbal y asesor de MinSalud. Defensor radical de la estatización del sistema de salud y bienestar animal.",
     "alerta": "medio",
     "alertaTexto": "Escándalo de chats y contratos.",
@@ -8289,10 +8894,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -8301,9 +8909,9 @@ const CANDIDATOS_HARDCODED = [
     "criterios": null
   },
   {
-    "nombre": "Nuevo Liberalismo / Mira / Decente",
+    "nombre": "Nuevo Liberalismo",
     "cabeza": "Germán Ricaurte",
-    "descripcion": "Nuevo Liberalismo / Mira / Decente · Cámara por Bogotá",
+    "descripcion": "Nuevo Liberalismo · Cámara por Bogotá",
     "camara": "camara",
     "departamento": "bogota",
     "sector": "Público",
@@ -8312,7 +8920,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 36,
     "gobierno": "Oposición",
-    "temas": "Vigilancia al \"Gasto Hormiga\"",
+    "temas": "Control Fiscal",
     "bio": "Economista especializado en vigilar el \"Gasto Hormiga\" y denunciar el derroche en la contratación estatal.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8325,9 +8933,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -8347,7 +8958,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 43,
     "gobierno": "Oposición",
-    "temas": "Eficiencia ética y servicios",
+    "temas": "Eficiencia ética / servicios",
     "bio": "Exconcejal y abogado. Experto en administración distrital con propuestas de austeridad y eficiencia en servicios públicos.",
     "alerta": "bajo",
     "alertaTexto": "Denuncias de violencia de pareja.",
@@ -8355,12 +8966,15 @@ const CANDIDATOS_HARDCODED = [
     "posicionLista": 103,
     "vector": [
       1.0,
-      5.0,
+      1.0,
       1.0,
       5.0,
       1.0,
       5.0,
-      2.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
       1.0,
       1.0,
       1.0
@@ -8382,7 +8996,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 34,
     "gobierno": "Independiente",
-    "temas": "Animalismo y diversidad",
+    "temas": "Animalismo / diversidad",
     "bio": "Exedilesa de Teusaquillo. Activista de la comunidad LGBTIQ+ y defensora de los derechos de los animales con apoyo de Carlos Amaya.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8398,6 +9012,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -8417,7 +9034,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 41,
     "gobierno": "Oposición",
-    "temas": "Emprendimiento y exportación",
+    "temas": "Emprendimiento / exportación",
     "bio": "Ingeniero industrial y exportador. Busca garantías para el pequeño empresario y políticas de segunda oportunidad económica.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8429,10 +9046,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -8452,7 +9072,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Aliado",
-    "temas": "Niñez y mujer en localidades",
+    "temas": "Niñez / mujer en localidades",
     "bio": "Líder comunitaria de Kennedy. Trabajadora social con enfoque en jardines infantiles y protección a la mujer vulnerable.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8464,10 +9084,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -8476,9 +9099,9 @@ const CANDIDATOS_HARDCODED = [
     "criterios": null
   },
   {
-    "nombre": "Nuevo Liberalismo / Mira / Decente",
+    "nombre": "Nuevo Liberalismo",
     "cabeza": "Juan Pablo Camacho",
-    "descripcion": "Nuevo Liberalismo / Mira / Decente · Cámara por Bogotá",
+    "descripcion": "Nuevo Liberalismo · Cámara por Bogotá",
     "camara": "camara",
     "departamento": "bogota",
     "sector": "Público",
@@ -8487,7 +9110,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Independiente",
-    "temas": "Justicia y seguridad local",
+    "temas": "Justicia / seguridad local",
     "bio": "Exalcalde de Usaquén y exdirector del IDPAC. Abogado con enfoque en seguridad local y fortalecimiento de la justicia.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8500,9 +9123,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -8522,7 +9148,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 38,
     "gobierno": "Aliado",
-    "temas": "Soberanía Alimentaria: Lucha contra la corrupción y sanción a productos por debajo de precios de producción.",
+    "temas": "Soberanía Alimentaria",
     "bio": "Abogada y filósofo. Fue dos veces concejal de El Carmen de Viboral. Es la fórmula de Jorge Enrique Robledo en Antioquia.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8535,9 +9161,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -8557,7 +9186,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 44,
     "gobierno": "Oposición",
-    "temas": "Sostenibilidad: Reforma a las corporaciones autónomas (CAR) para despolitizar la gestión ambiental.",
+    "temas": "Sostenibilidad / gestión ambiental.",
     "bio": "Ingeniera ambiental y exdirectora de Corantioquia. También se desempeñó como Secretaria de Medio Ambiente de Medellín.",
     "alerta": "bajo",
     "alertaTexto": "Críticas por el manejo de cuotas burocráticas durante su paso por la autoridad ambiental regional.",
@@ -8569,10 +9198,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -8592,7 +9224,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 52,
     "gobierno": "Oposición",
-    "temas": "Seguridad Democrática: Fortalecimiento de la seguridad en las regiones y oposición frontal al modelo de Petro.",
+    "temas": "Seguridad / oposición",
     "bio": "Comunicador social y ex-diputado. Actual Senador que busca saltar a la Cámara o consolidar su precandidatura presidencial para 2026.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8604,10 +9236,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -8627,7 +9262,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 38,
     "gobierno": "Oposición",
-    "temas": "Control Macroeconómico: Vigilancia estricta a la regla fiscal y debates técnicos sobre las reformas a la salud y pensiones.",
+    "temas": "Regla fiscal /  Pensiones",
     "bio": "Abogado de Envigado. Releva a Julián Peinado en la estructura de los exalcaldes Braulio Espinosa y Héctor Londoño.",
     "alerta": "bajo",
     "alertaTexto": "Heredero de una estructura cuestionada por el caso de corrupción en la UNGRD (vía Julián Peinado).",
@@ -8639,11 +9274,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "CG",
@@ -8662,7 +9300,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 49,
     "gobierno": "Aliado",
-    "temas": "Derechos Humanos: Protección de líderes sociales y apoyo a las reformas sociales del Gobierno Nacional.",
+    "temas": "Derechos Humanos / Reformas sociales",
     "bio": "Periodista y gestor social. Actual Representante por Antioquia. Defensor de los derechos humanos y cercano a Daniel Quintero.",
     "alerta": "bajo",
     "alertaTexto": "Cuestionamientos por presuntos conflictos de interés en contratos adjudicados a medios vinculados a sus familiares.",
@@ -8674,10 +9312,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -8697,7 +9338,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 38,
     "gobierno": "Aliado",
-    "temas": "Defensa Laboral: Protección de los derechos de los trabajadores y fortalecimiento de las familias.",
+    "temas": "Defensa Laboral / Familias.",
     "bio": "Administrador con estudios tributarios. Trabajó en la UTL de María Eugenia Lopera. Es la carta de \"Renovación Liberal\".",
     "alerta": "bajo",
     "alertaTexto": "Cuota directa del inhabilitado Julián Bedoya; vinculado al grupo de las \"Sin Piedad\".",
@@ -8709,11 +9350,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "DF",
@@ -8732,7 +9376,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 40,
     "gobierno": "Oposición",
-    "temas": "Oportunidades Juveniles: Bilingüismo y deporte como motores de transformación para jóvenes y niños.",
+    "temas": "Bilingüismo / deporte",
     "bio": "Politólogo de EAFIT. Fue Representante (2014-2018), Embajador en Canadá y Consejero Presidencial de Iván Duque.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8744,10 +9388,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -8767,7 +9414,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 59,
     "gobierno": "Oposición",
-    "temas": "Infraestructura Regional: Impulso a proyectos viales, colegios y hospitales que considera detenidos por el Gobierno Nacional.",
+    "temas": "Infraestructura Regional",
     "bio": "Contador con estudios en alta gerencia. Fue senador por 3 periodos (2010-2022). Es la cara experimentada de la lista de \"Fico\" tras romper con el Partido de la U.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8779,10 +9426,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -8802,7 +9452,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 46,
     "gobierno": "Aliado",
-    "temas": "Autonomía Territorial: Defensa del agua frente a grandes hidroeléctricas y cierre de brechas entre el campo y la ciudad.",
+    "temas": "Autonomía Territorial / garantía institucional",
     "bio": "Sociólogo y líder social de Marinilla (\"El Marinillo\"). Víctima de desplazamiento. Es el aliado principal de León Fredy Muñoz en la región.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8818,6 +9468,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -8837,7 +9490,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 40,
     "gobierno": "Oposición",
-    "temas": "Rigor Técnico: Transparencia en la ejecución de recursos y fortalecimiento de gestiones regionales con foco en la salud",
+    "temas": "Salud / Rigor Técnico",
     "bio": "Abogada con 12 años de experiencia. Docente de posgrado y experta en gestión pública. Representa la renovación técnica de Dignidad y Compromiso.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8850,9 +9503,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -8872,7 +9528,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 35,
     "gobierno": "Aliado",
-    "temas": "Justicia Climática: Protección de los cerros tutelares de Medellín y transición energética popular.",
+    "temas": "Justicia Climática / renovación digital",
     "bio": "Activista ambiental y líder juvenil del sector \"Quinterista\". Encabeza la lista cerrada de la coalición de gobierno en Antioquia.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -8884,10 +9540,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -8907,7 +9566,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 56,
     "gobierno": "Independiente",
-    "temas": "Adulto Mayor: Banderas de medio ambiente, protección de personas mayores y seguridad.",
+    "temas": "Adulto Mayor / desarollo regional",
     "bio": "Varias veces diputado de Antioquia. Es la carta más fuerte del \"Trujillismo\" (Itagüí) tras sacar 65 mil votos en la Asamblea.",
     "alerta": "bajo",
     "alertaTexto": "Elección anulada en 2025 por doble militancia; señalado de recibir favores de la Alcaldía de Itagüí.",
@@ -8919,11 +9578,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "JC",
@@ -8942,7 +9604,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Aliado",
-    "temas": "Economía Popular: Mejora de servicios públicos en Urabá y fortalecimiento de créditos para trabajadores informales.",
+    "temas": "Economía Popular / justicia territorial",
     "bio": "Administrador financiero y víctima de la masacre de La Chinita. Líder de economía popular en Urabá, avalado por la plataforma de Roy Barreras.",
     "alerta": "bajo",
     "alertaTexto": "Críticas por su rol como contratista vigente del Gobierno Petro mientras hace campaña.",
@@ -8954,10 +9616,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -8977,7 +9642,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Oposición",
-    "temas": "Autonomía Fiscal: Revivir el referendo descentralizador para que las regiones manejen sus propios recursos.",
+    "temas": "Autonomía Fiscal / seguridad productiva",
     "bio": "Abogado y exdiputado. Es la carta del gobernador Andrés Julián Rendón, con quien ha trabajado por 30 años en Rionegro.",
     "alerta": "bajo",
     "alertaTexto": "Perdió su curul en 2024 por una inhabilidad familiar (Consejo de Estado).",
@@ -8989,10 +9654,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -9012,7 +9680,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": null,
     "edadNum": null,
     "gobierno": "Oposición",
-    "temas": "Eficiencia Estatal: Leyes que simplifiquen trámites y conviertan a Antioquia en motor de oportunidades.",
+    "temas": "Eficiencia Estatal / gerencia pública",
     "bio": "Economista y Magíster en Gobierno de EAFIT. Ha trabajado en Presidencia, MinInterior y la Asamblea de Antioquia.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9024,10 +9692,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -9047,7 +9718,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 46,
     "gobierno": "Oposición",
-    "temas": "Descentralización: Promover el acceso a la educación y el fortalecimiento del sector agropecuario.",
+    "temas": "Educación / Agro",
     "bio": "Ingeniero agropecuario y MBA. Fue concejal de Bello y diputado. Perdió su curul en 2021 por fallo del Consejo de Estado.",
     "alerta": "bajo",
     "alertaTexto": "Elección anulada por doble militancia; aliado histórico de la cuestionada Casa Suárez Mira.",
@@ -9059,11 +9730,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "JC",
@@ -9082,7 +9756,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 35,
     "gobierno": "Independiente",
-    "temas": "Restitución Agraria: Agilizar la entrega de tierras por vía administrativa para evitar los largos procesos judiciales actuales.",
+    "temas": "Restitución Agraria / bienestar de la salud mental",
     "bio": "Politólogo de Apartadó. Fue asesor legislativo de Comunes y de la UTL de Alejandro Toro (Pacto Histórico). Exdirector regional de la Agencia de Tierras.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9098,6 +9772,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -9117,7 +9794,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": null,
     "edadNum": null,
     "gobierno": "Independiente",
-    "temas": "Reforma ley de primer empleo, congelar predial, alimentación en municipios.",
+    "temas": "Reforma ley de primer empleo / autoridad productiva",
     "bio": "Abogado, con estudios en derecho administrativo y gestión territorial y ambiental.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9129,10 +9806,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -9152,13 +9832,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 26,
     "gobierno": "Oposición",
-    "temas": "Tecnocracia: Promover la seguridad total y el mérito técnico en cargos públicos.",
+    "temas": "Seguridad",
     "bio": "Abogada y ex Señorita Antioquia. Renunció a su título para hacer política tras una polémica viral sobre \"dar bala\".",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
     "posicionLista": 106,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -9187,7 +9870,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 60,
     "gobierno": "Independiente",
-    "temas": "Poblaciones Vulnerables: Políticas de envejecimiento digno, atención a habitantes de calle y seguridad alimentaria.",
+    "temas": "Habitantes de calle / seguridad alimentaria",
     "bio": "Médico y 4 veces concejal de Medellín. Fue Secretario de Inclusión de Fico, luego aliado de Daniel Quintero y posteriormente su opositor.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9203,6 +9886,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -9222,7 +9908,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 47,
     "gobierno": "Oposición",
-    "temas": "Paz y Orden: Derogación de la Ley de Paz Total y fomento de la ganadería sostenible libre de deforestación.",
+    "temas": "Paz / Orden",
     "bio": "Administrador de empresas y especialista en Gerencia. Fue Alcalde de Cisneros y Diputado de Antioquia en dos periodos. Actual Representante.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9234,11 +9920,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "LO",
@@ -9247,7 +9936,7 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "Creemos",
-    "cabeza": "Luis G. Patiño",
+    "cabeza": "Luis Guillermo Patiño",
     "descripcion": "Creemos · Cámara por Antioquia",
     "camara": "camara",
     "departamento": "antioquia",
@@ -9257,7 +9946,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 48,
     "gobierno": "Oposición",
-    "temas": "Calidad Educativa: Bilingüismo, jornada única y modelos para evitar la deserción escolar.",
+    "temas": "Calidad Educativa / IA",
     "bio": "Politólogo y docente. Fue Secretario de Educación de Medellín. Es una de las piezas centrales de la lista de Federico Gutiérrez.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9269,10 +9958,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -9292,7 +9984,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 32,
     "gobierno": "Oposición",
-    "temas": "Defensa de la Vida: Legislación provida, protección de la familia tradicional y libertades religiosas.",
+    "temas": "Defensa de la Vida / libertades religiosas.",
     "bio": "Profesional en Negocios Internacionales y misionero católico. Fue el más votado de su partido en Medellín en 2022. Lidera la bancada provida.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9304,11 +9996,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "LL",
@@ -9327,7 +10022,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 41,
     "gobierno": "Aliado",
-    "temas": "Formalización Minera: Defensa de los pequeños mineros y del agua frente a la estigmatización del sector.",
+    "temas": "Formalización Minera / equidad territorial",
     "bio": "Ingeniera de minas de Marmato. Trabajó en socavones y lideró procesos sociales en el Suroeste antioqueño. Ganó su lugar mediante consulta interna.",
     "alerta": "bajo",
     "alertaTexto": "Contrato de $78 millones con la DIAN en 2025, gestionado a través de la UTL de Luz María Llinás.",
@@ -9339,10 +10034,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -9362,13 +10060,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 32,
     "gobierno": "Oposición",
-    "temas": "Desregulación Económica: Desmontaje de leyes y exceso regulatorio para fomentar el emprendimiento y la libre empresa.",
+    "temas": "Desregulación Económica / seguridad",
     "bio": "Abogada empresarial en el sector salud. Se estrena en política como ficha de Salvación Nacional y cuenta con el respaldo de Abelardo de la Espriella.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
     "posicionLista": 108,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -9397,13 +10098,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 61,
     "gobierno": "Oposición",
-    "temas": "Deporte y Salud: Transformación de clubes de fútbol en S.A. y creación de becas por impuestos para deportistas.",
+    "temas": "Deporte / Salud",
     "bio": "Odontólogo con múltiples especializaciones. Fue Representante en dos periodos previos. Gran impulsor de la Ley del Deporte.",
     "alerta": "ninguno",
     "alertaTexto": "Cuestionado por su histórico manejo de estructuras burocráticas en el sector salud y deportivo.",
     "listaCerrada": true,
     "posicionLista": 101,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -9432,13 +10136,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 36,
     "gobierno": "Oposición",
-    "temas": "Bienestar Infantil: Cadena perpetua para violadores de niños y prevención del consumo de drogas.",
+    "temas": "Bienestar Infantil / seguridad",
     "bio": "Ingeniera administradora. Fue concejala de Medellín (2016-2023). Rompió con el Centro Democrático tras tensiones internas.",
     "alerta": "ninguno",
     "alertaTexto": "Castigada por el CD tras su cercanía con la administración de Daniel Quintero.",
     "listaCerrada": true,
     "posicionLista": 102,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -9467,7 +10174,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 52,
     "gobierno": "Independiente",
-    "temas": "Educación Digital: Transformar el modelo educativo de colegios y apoyo a madres cabeza de hogar.",
+    "temas": "Educación Digital / ética territorial",
     "bio": "Filósofo, teólogo y exsecretario de Educación de Antioquia. Fue segundo en la votación a la Alcaldía de Bello con 55 mil votos.",
     "alerta": "bajo",
     "alertaTexto": "Exsacerdote (suspendido); aliado del cuestionado Julián Bedoya y los Suárez Mira.",
@@ -9479,11 +10186,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "NR",
@@ -9502,7 +10212,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 59,
     "gobierno": "Oposición",
-    "temas": "Economía Plateada: Bienestar animal (Leyes Ángel/No más olé) y negocios basados en la naturaleza.",
+    "temas": "Bienestar animal / sostenibilidad integral",
     "bio": "Abogado y actual Senador. Se \"baja\" a Cámara para que su fórmula, Juan Diego Gómez, regrese al Senado. Líder animalista.",
     "alerta": "medio",
     "alertaTexto": "Su llave electoral (Juan Diego Gómez) es investigado por supuesta corrupción en la Polfa.",
@@ -9514,11 +10224,14 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       4.0,
       1.0,
+      4.0,
       1.0,
       2.0,
       2.0,
       2.0,
-      2.0
+      1.0,
+      1.0,
+      1.0
     ],
     "foto": null,
     "iniciales": "NE",
@@ -9537,7 +10250,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 61,
     "gobierno": "Aliado",
-    "temas": "Jurisdicción Agraria: Implementación del Acuerdo de Paz y defensa de la pensión de alto riesgo para mineros y trabajadores.",
+    "temas": "Jurisdicción Agraria / paz territorial",
     "bio": "Excomandante de las FARC (conocido como Olmedo Ruiz) y negociador de paz. Actual Senador que busca asegurar la lista regional en Cámara.",
     "alerta": "bajo",
     "alertaTexto": "Pasado insurgente como comandante de los frentes 36 y 57 de las FARC.",
@@ -9550,7 +10263,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -9572,7 +10288,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "senior",
     "edadNum": 73,
     "gobierno": "Oposición",
-    "temas": "Justicia Tributaria: Normas catastrales para estratos 1 y 2 y descentralización de áreas metropolitanas.",
+    "temas": "Justicia Tributaria / rigor financiero",
     "bio": "Contador Público con vasta trayectoria. Ha sido Representante, Senador y Concejal de Medellín. Experto en temas tributarios.",
     "alerta": "ninguno",
     "alertaTexto": "Su longevidad en el Congreso es señalada por sectores jóvenes como un obstáculo para la renovación política.",
@@ -9584,10 +10300,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -9607,7 +10326,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Oposición",
-    "temas": "Movilidad Sostenible: Integración del transporte metropolitano y fomento a la movilidad eléctrica.",
+    "temas": "Movilidad Sostenible / control institucional",
     "bio": "Administrador y exconcejal de Medellín por tres periodos. Recientemente se desempeñó como Secretario Privado de la Alcaldía.",
     "alerta": "ninguno",
     "alertaTexto": "Cuestionado por sectores del uribismo tras su salida del Centro Democrático para unirse a Creemos.",
@@ -9619,10 +10338,13 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       4.0,
       1.0,
-      1.0,
-      3.0,
+      4.0,
+      2.0,
       2.0,
       3.0,
+      2.0,
+      1.0,
+      1.0,
       2.0
     ],
     "foto": null,
@@ -9642,7 +10364,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 52,
     "gobierno": "Independiente",
-    "temas": "Seguridad Humanitaria: Agenda enfocada en derechos humanos de comunidades afectadas por grupos armados.",
+    "temas": "Seguridad Humanitaria / garantía social",
     "bio": "Abogada con 30 años en el sector público. Viene de ser Defensora del Pueblo en Antioquia con fuerte incidencia en el Norte y Nordeste.",
     "alerta": "ninguno",
     "alertaTexto": "Críticas por falta de maquinaria política tradicional (\"voto de opinión puro\").",
@@ -9654,11 +10376,14 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       3.0,
       3.0,
-      2.0,
       3.0,
       3.0,
       3.0,
-      3.0
+      3.0,
+      3.0,
+      4.0,
+      4.0,
+      4.0
     ],
     "foto": null,
     "iniciales": "YT",
@@ -9677,7 +10402,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 38,
     "gobierno": "Oposición",
-    "temas": "Libertad Religiosa: Promover a las iglesias como aliadas sociales y eliminar barreras en el sistema de salud.",
+    "temas": "Libertad Religiosa / justicia social",
     "bio": "Fisioterapeuta y abogada con estudios en derecho corporativo. Única apuesta del MIRA en la coalición con Nuevo Liberalismo y Dignidad.",
     "alerta": "ninguno",
     "alertaTexto": "Perfil de nicho estrictamente confesional bajo la disciplina del MIRA.",
@@ -9690,9 +10415,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -9712,7 +10440,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Independiente",
-    "temas": "Ley del Deporte: Reforma integral para profesionalizar disciplinas y crear incentivos al emprendimiento deportivo.",
+    "temas": "deporte productivo / disciplina social",
     "bio": "Administrador y exbaloncestista profesional. Actual Representante. Su perfil une el deporte de alto rendimiento con la gestión empresarial.",
     "alerta": "ninguno",
     "alertaTexto": "Críticas por el bajo impacto de sus iniciativas legislativas fuera del ámbito deportivo.",
@@ -9728,6 +10456,9 @@ const CANDIDATOS_HARDCODED = [
       4.0,
       4.0,
       5.0,
+      4.0,
+      4.0,
+      4.0,
       4.0
     ],
     "foto": null,
@@ -9747,7 +10478,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 52,
     "gobierno": "Aliado",
-    "temas": "Escuelas de Paz: Deporte y cultura en zonas de conflicto como herramientas de reconciliación y prevención.",
+    "temas": "seguridad territorial / dignidad campesina",
     "bio": "Excombatiente de las FARC y firmante de paz. Actual Representante. Se ha enfocado en la implementación del Acuerdo en zonas de conflicto.",
     "alerta": "bajo",
     "alertaTexto": "Pasado como mando medio en la guerrilla; cuestionado por sectores de derecha por su origen insurgente.",
@@ -9760,7 +10491,10 @@ const CANDIDATOS_HARDCODED = [
       1.0,
       5.0,
       1.0,
-      3.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
       5.0,
       5.0,
       5.0
@@ -9782,7 +10516,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 41,
     "gobierno": "Oposición",
-    "temas": "Turismo Deportivo: Reducción de impuestos para eventos deportivos y fomento de tiquetes aéreos accesibles.",
+    "temas": "Turismo Deportivo / tecnología",
     "bio": "Licenciada en Educación y exsecretaria de Deportes de Bello. Actual Representante, reconocida por su cercanía al sector de Itagüí.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9794,10 +10528,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -9817,7 +10554,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 54,
     "gobierno": "Oposición",
-    "temas": "Reactivación Textil: Aranceles de protección para la industria nacional de confecciones y fomento al transporte.",
+    "temas": "Reactivación Textil / educación digital",
     "bio": "Administrador y exalcalde de Don Matías. Ha sido Diputado y Representante. Tiene fuerte arraigo en el sector transporte y confección.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9829,10 +10566,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -9852,7 +10592,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 43,
     "gobierno": "Independiente",
-    "temas": "Movilidad Inteligente: Leyes para la integración de sistemas de transporte masivo y seguridad vial tecnológica.",
+    "temas": "Movilidad Inteligente / desarrollo regional",
     "bio": "Ingeniero civil y exsecretario de Movilidad de Medellín y Antioquia. Experto técnico en infraestructura y planeación urbana.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9865,9 +10605,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -9887,7 +10630,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 42,
     "gobierno": "Independiente",
-    "temas": "Desarrollo Regional: Autonomía presupuestal para municipios intermedios y fortalecimiento de la descentralización.",
+    "temas": "vivienda digna / gestión segura",
     "bio": "Abogado y exalcalde de La Ceja (2020-2023). Reconocido por su gestión administrativa en el Oriente antioqueño.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9900,9 +10643,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -9912,7 +10658,7 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "¡Ahora Col.!",
-    "cabeza": "Cristian C. Quintero",
+    "cabeza": "Cristian Camilo Quintero",
     "descripcion": "¡Ahora Col.! · Cámara por Antioquia",
     "camara": "camara",
     "departamento": "antioquia",
@@ -9922,7 +10668,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 34,
     "gobierno": "Aliado",
-    "temas": "Juventud Rural: Incentivos para el retorno de jóvenes al campo mediante tecnología y conectividad agropecuaria.",
+    "temas": "Juventud Rural / soberanía digital",
     "bio": "Politólogo con énfasis en gestión pública. Joven promesa del sector verde con base en el Valle de Aburrá.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9935,9 +10681,12 @@ const CANDIDATOS_HARDCODED = [
       3.0,
       2.0,
       2.0,
-      5.0,
+      4.0,
       3.0,
       5.0,
+      3.0,
+      3.0,
+      3.0,
       3.0
     ],
     "foto": null,
@@ -9957,7 +10706,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 50,
     "gobierno": "Oposición",
-    "temas": "Seguridad Privada: Regulación y apoyo a la seguridad ciudadana mediante la integración de redes privadas y policía.",
+    "temas": "Seguridad Privada / generación de empleo",
     "bio": "Abogado y empresario. Representa a sectores gremiales y de la reserva activa de la fuerza pública.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -9969,10 +10718,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -9992,7 +10744,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 30,
     "gobierno": "Aliado",
-    "temas": "Renta Básica de Cuidado: Reconocimiento económico a mujeres cuidadoras y reforma a la salud reproductiva.",
+    "temas": "Renta Básica de Cuidado / gestión social",
     "bio": "Activista feminista y defensora de derechos humanos. Representa a movimientos de base y colectivos de mujeres.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -10004,10 +10756,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -10027,7 +10782,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "intermedio",
     "edadNum": 55,
     "gobierno": "Oposición",
-    "temas": "Salud Rural: Creación de centros de atención primaria dotados en zonas apartadas y dignificación del talento humano.",
+    "temas": "Salud Rural / libertad",
     "bio": "Reformas del gobierno, jurisdicción agraria, derechos de los trabajadores.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -10039,10 +10794,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -10062,13 +10820,16 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 32,
     "gobierno": "Oposición",
-    "temas": "Desregulación Económica: Desmontaje de leyes y exceso regulatorio para fomentar la libre empresa.",
+    "temas": "Desregulación Económica / seguridad técnica",
     "bio": "Abogada empresarial. Se estrena en política como ficha de Salvación Nacional y cuenta con el respaldo de Abelardo de la Espriella.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
     "listaCerrada": true,
     "posicionLista": 108,
     "vector": [
+      3.0,
+      3.0,
+      3.0,
       3.0,
       3.0,
       3.0,
@@ -10087,7 +10848,7 @@ const CANDIDATOS_HARDCODED = [
   },
   {
     "nombre": "Pacto Histórico",
-    "cabeza": "Luisa F. Giraldo Villada",
+    "cabeza": "Luisa Fernanda Giraldo Villada",
     "descripcion": "Pacto Histórico · Cámara por Antioquia",
     "camara": "camara",
     "departamento": "antioquia",
@@ -10097,7 +10858,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 38,
     "gobierno": "Aliado",
-    "temas": "Planeación Territorial: Reforma a la ley de regalías para priorizar proyectos de impacto social inmediato.",
+    "temas": "Planeación Territorial / familia",
     "bio": "Profesional en planeación y desarrollo social. Ha trabajado en la formulación de planes de desarrollo municipales.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -10109,10 +10870,13 @@ const CANDIDATOS_HARDCODED = [
       5.0,
       1.0,
       5.0,
+      1.0,
       5.0,
-      3.0,
       5.0,
       4.0,
+      5.0,
+      5.0,
+      5.0,
       5.0
     ],
     "foto": null,
@@ -10132,7 +10896,7 @@ const CANDIDATOS_HARDCODED = [
     "edad": "joven",
     "edadNum": 26,
     "gobierno": "Independiente",
-    "temas": "Seguridad y Disciplina Universitaria: Limitar la autonomía universitaria para permitir el ingreso de la fuerza pública a los campus.",
+    "temas": "Seguridad / Disciplina Universitaria",
     "bio": "Abogado y el candidato más joven de la lista uribista. Se define como judío, sionista y \"Joven Cabal\". Trabajó en la revocatoria contra Daniel Quintero junto a Andrés \"Gury\" Rodríguez.",
     "alerta": "ninguno",
     "alertaTexto": "Ninguno",
@@ -10144,10 +10908,13 @@ const CANDIDATOS_HARDCODED = [
       2.0,
       5.0,
       1.0,
+      5.0,
       1.0,
       2.0,
-      1.0,
       2.0,
+      1.0,
+      1.0,
+      1.0,
       1.0
     ],
     "foto": null,
@@ -10223,15 +10990,41 @@ const opcionesPerfil = {
 };
 
 const temasDisponibles = [
-  { val: 'seguridad',      label: 'Seguridad y paz',           preguntas: [2] },
-  { val: 'modelo_economico', label: 'Modelo económico',        preguntas: [4, 11] },
-  { val: 'economia',       label: 'Reformas sociales',         preguntas: [1, 5] },
-  { val: 'medioambiente',  label: 'Medio ambiente y energía',  preguntas: [3] },
-  { val: 'corrupcion',     label: 'Anticorrupción y justicia', preguntas: [7] },
-  { val: 'tierra',         label: 'Tierras y ruralidad',       preguntas: [9] },
-  { val: 'democracia',     label: 'Control ciudadano',         preguntas: [10] },
-  { val: 'exterior',       label: 'Política exterior',         preguntas: [6] },
+  { val: 'seguridad',        label: 'Seguridad y paz',           preguntas: [2],        keywords: ['seguridad','paz','paz total','defensa','cárceles','orden','armas','control territorial','seguridad ciudadana','seguridad humanitaria','seguridad democrática','víctimas','extorsión','ciberseguridad','paz urbana','paz territorial','seguridad local','seguridad territorial','seguridad privada','bienestar policial','disciplina social','oposición'] },
+  { val: 'modelo_economico', label: 'Modelo económico',          preguntas: [4, 11],    keywords: ['empleo','empresa','mipymes','fiscal','infraestructura','movilidad','obras públicas','servicios públicos','servicios','conectividad','ia','emprendimiento','economía','industria','pymes','competitividad','crédito','tributación','iva','finanzas','presupuesto','desregulación económica','tarifas','vías','economía popular','economia popular','empleo joven','reforma laboral','derechos laborales','tics','soat','sisbén','tecnología','tecnología social','inteligencia','exportación','rigor fiscal','libertad económica','reactivación textil','generación de empleo','trámites','gobierno corporativo','talento humano','rigor técnico','rigor financiero','soberanía digital','infraestructura social','propiedad','trabajo','finanzas públicos','renta básica de cuidado','movilidad sostenible','movilidad inteligente','turismo deportivo','gestión de recursos','gestión segura','gestión social'] },
+  { val: 'educacion',        label: 'Educación',                 preguntas: [1],        keywords: ['educación','pae','educación digital','universidad pública','bilingüismo','calidad educativa','educación pública','educación productiva','programación','juventud','juventud rural','educación pública','renovación digital'] },
+  { val: 'salud',            label: 'Salud',                     preguntas: [5],        keywords: ['salud','reforma salud','salud mental','salud rural','salario médicos','vigilancia sanitaria','bienestar de la salud mental','pensiones','adulto mayor','discapacidad','bienestar infantil','habitantes de calle','rigor técnico'] },
+  { val: 'reformas',         label: 'Reformas sociales',         preguntas: [1, 5],     keywords: ['vivienda','familia','niñez','mujer','deporte','cultura','animalismo','mujeres','infancia','explotación sexual','barrismo','bienestar animal','protección animal','vivienda rural','vivienda digna','mujer en localidades','diversidad','memoria','defensa laboral','reformas sociales'] },
+  { val: 'medioambiente',    label: 'Medio ambiente y energía',  preguntas: [3],        keywords: ['energía','minería','medio ambiente','ambiente','recursos','transición energética','sostenibilidad','reciclaje','justicia climática','tarifas energía','minas','cambio climático','sostenibilidad integral','formalización minera','gestión ambiental'] },
+  { val: 'tierra',           label: 'Tierras y ruralidad',       preguntas: [9],        keywords: ['agro','campo','reforma agraria','seguridad alimentaria','soberanía alimentaria','ganadería','agroindustria','restitución agraria','jurisdicción agraria','desarrollo rural','rural','dignidad campesina','gestión territorial','planeación territorial'] },
+  { val: 'corrupcion',       label: 'Anticorrupción y justicia', preguntas: [7],        keywords: ['anticorrupción','justicia','ética pública','consumidor','justicia social','impunidad','veeduría','control fiscal','transparencia','ética','eficiencia estatal','eficiencia ética','reforma a la justicia','institucionalidad','control institucional','transparencia institucional','justicia tributaria','reforma al congreso'] },
+  { val: 'democracia',       label: 'Control ciudadano',         preguntas: [10],       keywords: ['descentralización','autonomía regional','autonomía','federalismo','reforma política','regiones','ordenamiento territorial','soberanía','pueblos indigenas','consulta previa','autonomía territorial','autonomía fiscal','desarrollo regional','constituyente','autonomía capitalina','planeación territorial'] },
+  { val: 'derechos',         label: 'Derechos y libertades',     preguntas: [12,13,14], keywords: ['género','mujer','mujeres','diversidad','libertades','libertad','derechos humanos','vida','familia','fé','fe','iglesias','libertad religiosa','libertades religiosas','laicidad','defensa de la vida','comunidad afro','agenda provida','ley del cuidado'] },
+  { val: 'exterior',         label: 'Política exterior',         preguntas: [6],        keywords: ['fronteras','soberanía','seguridad humanitaria','diplomacia','venezuela'] },
+  { val: 'tecnologia',       label: 'Tecnología e innovación',   preguntas: [4, 11],    keywords: ['ia','tics','tecnología','tecnología social','conectividad','ciberseguridad','programación','educación digital','innovación','soberanía digital','renovación digital','inteligencia','empleo joven','emprendimiento','exportación','industria'] },
+  { val: 'comunidades',      label: 'Comunidades y diversidad',  preguntas: [10],       keywords: ['comunidad afro','pueblos indigenas','consulta previa','memoria','diversidad','autonomía zenú','gestión territorial','autonomía capitalina','autonomía territorial','gestión social','equidad territorial','justicia territorial'] },
+  { val: 'servicios',        label: 'Servicios públicos',        preguntas: [1, 4],     keywords: ['servicios públicos','servicios','tarifas','peajes','soat','sisbén','agua','trámites','vivienda','vivienda digna','movilidad','movilidad sostenible','movilidad inteligente','infraestructura','obras públicas','gestión segura'] },
 ];
+
+// Mapa de keywords para matching de temas bandera
+const TEMAS_KEYWORDS_MAP = {};
+temasDisponibles.forEach(t => {
+  TEMAS_KEYWORDS_MAP[t.val] = t.keywords || [];
+});
+
+function matchTemasbandera(temasBanderaStr, temasUsuario) {
+  if (!temasBanderaStr || !temasUsuario || temasUsuario.length === 0) return 0;
+  const bandera = temasBanderaStr.toLowerCase();
+  const puntoPorTema = 20 / temasUsuario.length;
+  let total = 0;
+  temasUsuario.forEach(temaVal => {
+    const keywords = TEMAS_KEYWORDS_MAP[temaVal] || [];
+    const hayMatch = keywords.some(kw => bandera.includes(kw.toLowerCase()));
+    if (hayMatch) total += puntoPorTema;
+  });
+  return Math.min(20, total);
+}
+
 
 function initDepartamentos() {
   const select = document.getElementById('selectDepartamento');
@@ -10259,11 +11052,19 @@ function initPerfil() {
   renderTemas();
 }
 
+const MULTI_SELECT_CAMPOS = ['sector', 'gobierno'];
+
 function renderOpciones(tipo, containerId) {
   const container = document.getElementById(containerId);
-  container.innerHTML = opcionesPerfil[tipo].map(op => `
+  const isMulti = MULTI_SELECT_CAMPOS.includes(tipo);
+  if (isMulti && !Array.isArray(perfilCandidato[tipo])) {
+    perfilCandidato[tipo] = [];
+  }
+  const hint = isMulti ? '<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:0.1em;color:var(--muted);margin-bottom:8px;">SELECCIÓN MÚLTIPLE</div>' : '';
+  const radioClass = isMulti ? 'opcion-radio cuadrado' : 'opcion-radio';
+  container.innerHTML = hint + opcionesPerfil[tipo].map(op => `
     <button class="opcion-btn" onclick="seleccionarPerfil('${tipo}', '${op.val}', this)">
-      <span class="opcion-radio"></span>${op.label}
+      <span class="${radioClass}"></span>${op.label}
     </button>
   `).join('');
 }
@@ -10279,9 +11080,42 @@ function renderTemas() {
 
 function seleccionarPerfil(tipo, val, btn) {
   const container = btn.parentElement;
-  container.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  perfilCandidato[tipo] = val;
+  const isMulti = MULTI_SELECT_CAMPOS.includes(tipo);
+
+  if (!isMulti) {
+    container.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    perfilCandidato[tipo] = val;
+    return;
+  }
+
+  if (!Array.isArray(perfilCandidato[tipo])) perfilCandidato[tipo] = [];
+
+  if (val === 'indiferente') {
+    perfilCandidato[tipo] = ['indiferente'];
+    container.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    return;
+  }
+
+  // Quitar indiferente si estaba
+  const idxIndi = perfilCandidato[tipo].indexOf('indiferente');
+  if (idxIndi > -1) perfilCandidato[tipo].splice(idxIndi, 1);
+
+  const idx = perfilCandidato[tipo].indexOf(val);
+  if (idx > -1) {
+    perfilCandidato[tipo].splice(idx, 1);
+  } else {
+    perfilCandidato[tipo].push(val);
+  }
+
+  // Re-pintar todos los botones
+  container.querySelectorAll('.opcion-btn').forEach(b => {
+    const bVal = b.getAttribute('onclick')?.match(/'([^']+)',\s*this/)?.[1];
+    if (bVal) {
+      b.classList.toggle('selected', perfilCandidato[tipo].includes(bVal));
+    }
+  });
 }
 
 function toggleTema(val, btn) {
@@ -10430,16 +11264,30 @@ function calcularCriterios(candidato) {
     criterios.edad = { cumple: true, activo: false };
   }
 
-  // 5. Sector de origen — match exacto con valor de BD
-  if (perfilCandidato.sector && perfilCandidato.sector !== 'indiferente') {
-    criterios.sector = { cumple: candidato.sector === perfilCandidato.sector, activo: true };
+  // 5. Sector de origen — selección múltiple
+  const sectorPref = perfilCandidato.sector;
+  const sectorActivo = Array.isArray(sectorPref)
+    ? sectorPref.length > 0 && !sectorPref.includes('indiferente')
+    : sectorPref && sectorPref !== 'indiferente';
+  if (sectorActivo) {
+    const cumpleSector = Array.isArray(sectorPref)
+      ? sectorPref.includes(candidato.sector)
+      : candidato.sector === sectorPref;
+    criterios.sector = { cumple: cumpleSector, activo: true };
   } else {
     criterios.sector = { cumple: true, activo: false };
   }
 
-  // 6. Posición frente al gobierno
-  if (perfilCandidato.gobierno && perfilCandidato.gobierno !== 'indiferente') {
-    criterios.gobierno = { cumple: candidato.gobierno === perfilCandidato.gobierno, activo: true };
+  // 6. Posición frente al gobierno — selección múltiple
+  const gobiernoPref = perfilCandidato.gobierno;
+  const gobiernoActivo = Array.isArray(gobiernoPref)
+    ? gobiernoPref.length > 0 && !gobiernoPref.includes('indiferente')
+    : gobiernoPref && gobiernoPref !== 'indiferente';
+  if (gobiernoActivo) {
+    const cumpleGobierno = Array.isArray(gobiernoPref)
+      ? gobiernoPref.includes(candidato.gobierno)
+      : candidato.gobierno === gobiernoPref;
+    criterios.gobierno = { cumple: cumpleGobierno, activo: true };
   } else {
     criterios.gobierno = { cumple: true, activo: false };
   }
@@ -10462,9 +11310,11 @@ function calcularCriterios(candidato) {
 }
 
 // ── Score final 70/30 con normalización ────────────────────
-function calcularScoreFinal(scoreIdeologico, criterios) {
-  const base = (scoreIdeologico / 100) * 70;
+function calcularScoreFinal(scoreIdeologico, criterios, temasBanderaStr, temasUsuario) {
+  // 50% ideológico
+  const base = (scoreIdeologico / 100) * 50;
 
+  // 30% perfil
   let ptsPerfil = 0;
   if (criterios.educacion.activo   && criterios.educacion.cumple)   ptsPerfil += 5;
   if (criterios.experiencia.activo && criterios.experiencia.cumple) ptsPerfil += 5;
@@ -10472,26 +11322,34 @@ function calcularScoreFinal(scoreIdeologico, criterios) {
   if (criterios.sector?.activo     && criterios.sector.cumple)      ptsPerfil += 5;
   if (criterios.gobierno?.activo   && criterios.gobierno.cumple)    ptsPerfil += 5;
 
-  // Alertas — sistema gradual
+  // Alertas graduales
   const nivelAlerta = criterios.alertas?.nivel || 'ninguno';
-  const ptsAlerta = nivelAlerta === 'ninguno' ? 5
-                  : nivelAlerta === 'bajo'    ? 0
+  const ptsAlerta = nivelAlerta === 'ninguno' ?  5
+                  : nivelAlerta === 'bajo'    ?  0
                   : nivelAlerta === 'medio'   ? -2.5
                   : nivelAlerta === 'alto'    ? -5
                   : 0;
   ptsPerfil += ptsAlerta;
 
-  // Máximo posible según criterios activos (alertas siempre activo = +5)
-  let maxPosible = 70;
+  let maxPosible = 50;
   if (criterios.educacion.activo)   maxPosible += 5;
   if (criterios.experiencia.activo) maxPosible += 5;
   if (criterios.region.activo)      maxPosible += 5;
   if (criterios.sector?.activo)     maxPosible += 5;
   if (criterios.gobierno?.activo)   maxPosible += 5;
-  maxPosible += 5; // alertas siempre suma al máximo posible
+  maxPosible += 5; // alertas siempre
 
-  const scoreRaw = Math.round(((base + ptsPerfil) / maxPosible) * 100);
-  return Math.min(100, Math.max(0, scoreRaw)); // entre 0 y 100
+  // 20% temas bandera
+  const ptsTemas = matchTemasbandera(temasBanderaStr, temasUsuario);
+  // Si no eligió temas, los 20pts se redistribuyen al ideológico
+  const maxTemas = (temasUsuario && temasUsuario.length > 0) ? 20 : 0;
+  if (maxTemas === 0) maxPosible -= 0; // ya no suma, se ignora
+
+  const scoreRaw = maxTemas > 0
+    ? Math.round(((base + ptsPerfil + ptsTemas) / (maxPosible + maxTemas)) * 100)
+    : Math.round(((base + ptsPerfil) / maxPosible) * 100);
+
+  return Math.min(100, Math.max(0, scoreRaw));
 }
 
 function calcularAlineacion() {
@@ -10514,7 +11372,7 @@ function calcularAlineacion() {
     const vectorFiltrado = indicesValidos.map(i => candidato.vector[i] * pesos[i]);
     const scoreIdeologico = calcularScore(userVector, vectorFiltrado);
     const criterios = calcularCriterios(candidato);
-    const scoreFinal = calcularScoreFinal(scoreIdeologico, criterios);
+    const scoreFinal = calcularScoreFinal(scoreIdeologico, criterios, candidato.temas, perfilCandidato.temas);
 
     return {
       ...candidato,
@@ -10621,16 +11479,24 @@ function generateMatchExplanation(partido) {
   }
 
   // 2. Posición frente al gobierno si el usuario eligió
-  if (perfilCandidato.gobierno && perfilCandidato.gobierno !== 'indiferente' && partido.gobierno) {
+  const gobPref = perfilCandidato.gobierno;
+  const gobActivo = Array.isArray(gobPref) ? gobPref.length > 0 && !gobPref.includes('indiferente') : gobPref && gobPref !== 'indiferente';
+  if (gobActivo && partido.gobierno) {
     const govLabel = { aliado: 'aliado del gobierno', independiente: 'independiente', oposición: 'oposición al gobierno' };
-    if (partido.gobierno.toLowerCase() === perfilCandidato.gobierno.toLowerCase()) {
+    const gobVals = Array.isArray(gobPref) ? gobPref : [gobPref];
+    if (gobVals.some(v => v.toLowerCase() === partido.gobierno.toLowerCase())) {
       razones.push({ texto: `Posición frente al gobierno: ${govLabel[partido.gobierno.toLowerCase()] || partido.gobierno} — coincide con tu preferencia.` });
     }
   }
 
   // 3. Sector de origen si el usuario eligió
-  if (perfilCandidato.sector && perfilCandidato.sector !== 'indiferente' && partido.sector === perfilCandidato.sector) {
-    razones.push({ texto: `Proviene del sector ${partido.sector.toLowerCase()} — exactamente el perfil que indicaste.` });
+  const secPref = perfilCandidato.sector;
+  const secActivo = Array.isArray(secPref) ? secPref.length > 0 && !secPref.includes('indiferente') : secPref && secPref !== 'indiferente';
+  if (secActivo && partido.sector) {
+    const secVals = Array.isArray(secPref) ? secPref : [secPref];
+    if (secVals.includes(partido.sector)) {
+      razones.push({ texto: `Proviene del sector ${partido.sector.toLowerCase()} — exactamente el perfil que indicaste.` });
+    }
   }
 
   // 4. Experiencia
@@ -10641,8 +11507,22 @@ function generateMatchExplanation(partido) {
     }
   }
 
-  // 5. Temas bandera del candidato
-  if (partido.temas) {
+  // 5. Match de temas bandera con intereses del usuario
+  if (partido.temas && perfilCandidato.temas && perfilCandidato.temas.length > 0) {
+    const bandera = partido.temas.toLowerCase();
+    const temasConMatch = perfilCandidato.temas.filter(temaVal => {
+      const keywords = TEMAS_KEYWORDS_MAP[temaVal] || [];
+      return keywords.some(kw => bandera.includes(kw.toLowerCase()));
+    });
+    const temasLabel = temasDisponibles.reduce((acc, t) => { acc[t.val] = t.label; return acc; }, {});
+
+    if (temasConMatch.length > 0) {
+      const nombresMatch = temasConMatch.map(v => temasLabel[v]).join(', ');
+      razones.push({ texto: `Sus temas bandera (${partido.temas}) hacen match con tus intereses en: ${nombresMatch}.` });
+    } else {
+      razones.push({ texto: `Sus temas bandera: ${partido.temas}.` });
+    }
+  } else if (partido.temas) {
     razones.push({ texto: `Sus temas bandera: ${partido.temas}.` });
   }
 
@@ -10752,10 +11632,20 @@ function renderResultados(resultados) {
       ? opcionesPerfil.educacion.find(o => o.val === perfilCandidato.educacion)?.label : null,
     perfilCandidato.region && perfilCandidato.region !== 'indiferente'
       ? opcionesPerfil.region.find(o => o.val === perfilCandidato.region)?.label : null,
-    perfilCandidato.gobierno && perfilCandidato.gobierno !== 'indiferente'
-      ? opcionesPerfil.gobierno.find(o => o.val === perfilCandidato.gobierno)?.label : null,
-    perfilCandidato.sector && perfilCandidato.sector !== 'indiferente'
-      ? opcionesPerfil.sector.find(o => o.val === perfilCandidato.sector)?.label : null,
+    (() => {
+      const g = perfilCandidato.gobierno;
+      if (!g) return null;
+      const vals = Array.isArray(g) ? g.filter(v => v !== 'indiferente') : (g !== 'indiferente' ? [g] : []);
+      if (!vals.length) return null;
+      return vals.map(v => opcionesPerfil.gobierno.find(o => o.val === v)?.label).filter(Boolean).join(' o ');
+    })(),
+    (() => {
+      const s = perfilCandidato.sector;
+      if (!s) return null;
+      const vals = Array.isArray(s) ? s.filter(v => v !== 'indiferente') : (s !== 'indiferente' ? [s] : []);
+      if (!vals.length) return null;
+      return vals.map(v => opcionesPerfil.sector.find(o => o.val === v)?.label).filter(Boolean).join(' o ');
+    })(),
     perfilCandidato.edad && perfilCandidato.edad !== 'indiferente'
       ? `Preferencia de edad: ${edadLabel[perfilCandidato.edad] || perfilCandidato.edad} años` : null,
   ].filter(Boolean);
